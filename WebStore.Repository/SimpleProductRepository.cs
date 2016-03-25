@@ -7,6 +7,10 @@ using WebStore.Domain.Entities;
 using WebStore.Domain.Abstract;
 using WebStore.DataLayer;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 
 namespace WebStore.Repository
 {
@@ -51,7 +55,26 @@ namespace WebStore.Repository
 
         public void Save()
         {
-            ctx.SaveChanges();
+            
+            try
+            {
+                
+                ctx.SaveChanges();
+                
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                ex.Entries.Single().Reload();
+
+                // Save changes.
+                ctx.SaveChanges();
+
+            }
+        }
+
+        public void UpdateCustomer(Product product)
+        {
+            ctx.Entry(product).State = EntityState.Modified;
         }
     }
 }

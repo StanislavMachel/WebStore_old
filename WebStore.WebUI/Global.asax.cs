@@ -16,7 +16,8 @@ namespace WebStore.WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WebStoreDbContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<WebStoreDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WebStoreDbContext>());
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
         }
     }
