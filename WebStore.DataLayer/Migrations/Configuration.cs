@@ -9,7 +9,8 @@ namespace WebStore.DataLayer.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(WebStore.DataLayer.WebStoreDbContext context)

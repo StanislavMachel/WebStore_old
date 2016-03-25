@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Ninject;
+using WebStore.Domain.Abstract;
+using WebStore.Repository;
 
 namespace WebStore.WebUI.Infrastructure
 {
@@ -28,6 +30,7 @@ namespace WebStore.WebUI.Infrastructure
         private void AddBindings()
         {
             //put buindings here
+            kelner.Bind<IProductRepository>().To<SimpleProductRepository>();
         }
     }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Domain", "WebStore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.DataLayer", "WebStore.DataLayer\WebStore.DataLayer.csproj", "{9A38F6AF-1E2D-4809-8DA9-795FB2FE159A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Repository", "WebStore.Repository\WebStore.Repository.csproj", "{FD54A3DB-4225-46FA-B482-52B59D1991EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9A38F6AF-1E2D-4809-8DA9-795FB2FE159A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A38F6AF-1E2D-4809-8DA9-795FB2FE159A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A38F6AF-1E2D-4809-8DA9-795FB2FE159A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD54A3DB-4225-46FA-B482-52B59D1991EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD54A3DB-4225-46FA-B482-52B59D1991EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD54A3DB-4225-46FA-B482-52B59D1991EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD54A3DB-4225-46FA-B482-52B59D1991EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
