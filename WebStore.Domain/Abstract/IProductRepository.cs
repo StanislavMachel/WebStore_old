@@ -11,7 +11,7 @@ namespace WebStore.Domain.Abstract
     public interface IProductRepository
     {
         IEnumerable<Product> GetProducts();
-        Product GetProductById(int id);
+        Product GetProductById(int? id);
         ObservableCollection<Product> ProductsInMemory();
         void AddNewProduct(Product product);
         void DeleteProduct(int id);

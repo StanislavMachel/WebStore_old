@@ -18,7 +18,7 @@ namespace WebStore.Repository
         {
             return ctx.Products.ToList().AsEnumerable();
         }
-        public Product GetProductById (int id)
+        public Product GetProductById (int? id)
         {
             return ctx.Products.Find(id);
         }
