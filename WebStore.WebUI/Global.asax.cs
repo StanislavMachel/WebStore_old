@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebStore.DataLayer;
+using WebStore.WebUI.Models.Binds;
 
 namespace WebStore.WebUI
 {
@@ -16,6 +17,7 @@ namespace WebStore.WebUI
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WebStoreDbContext>());
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
         }
     }
 }
