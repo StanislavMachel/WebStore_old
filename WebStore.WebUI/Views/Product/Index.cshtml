@@ -13,15 +13,21 @@
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
 {
 
-    @Html.TextBox("q", null, htmlAttributes: new { @class = "form-control col-sm-2"})
+    @Html.TextBox("q", null, htmlAttributes: new { @id = "searchBox", @class = "form-control col-sm-2" })
 
     <button type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span> Search
     </button>
-    
+
 }
 
-<table class="table">
+<div id="productTable">
+    @{ 
+        Html.RenderPartial("_ProductTable", Model);
+    }
+</div>
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -60,4 +66,4 @@
     </tr>
 }
 
-</table>
+</table>*@
