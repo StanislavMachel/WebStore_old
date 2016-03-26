@@ -15,7 +15,8 @@ namespace WebStore.Domain.Abstract
         ObservableCollection<Product> ProductsInMemory();
         void AddNewProduct(Product product);
         void DeleteProduct(int id);
-        void UpdateCustomer(Product product);
+        void UpdateProduct(Product product);
+        void Dispose();
        
         void Save();
     }

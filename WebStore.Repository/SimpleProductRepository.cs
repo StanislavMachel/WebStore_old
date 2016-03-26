@@ -55,24 +55,10 @@ namespace WebStore.Repository
 
         public void Save()
         {
-            
-            try
-            {
-                
-                ctx.SaveChanges();
-                
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                ex.Entries.Single().Reload();
-
-                // Save changes.
-                ctx.SaveChanges();
-
-            }
+            ctx.SaveChanges();
         }
 
-        public void UpdateCustomer(Product product)
+        public void UpdateProduct(Product product)
         {
             ctx.Entry(product).State = EntityState.Modified;
         }
