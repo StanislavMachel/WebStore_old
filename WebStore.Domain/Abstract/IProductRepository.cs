@@ -10,6 +10,7 @@ namespace WebStore.Domain.Abstract
 {
     public interface IProductRepository
     {
+        IEnumerable<Product> GetProducts(string q);
         IEnumerable<Product> GetProducts();
         Product GetProductById(int? id);
         ObservableCollection<Product> ProductsInMemory();
