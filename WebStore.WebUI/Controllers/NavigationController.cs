@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebStore.Domain.Abstract;
 
 namespace WebStore.WebUI.Controllers
 {
     public class NavigationController : Controller
     {
-        // GET: Navigation
-        public ActionResult Index()
+        private IProductRepository repository;
+        public NavigationController(IProductRepository productRepository)
         {
-            return View();
+            repository = productRepository;
+        }
+        
+        public string Menu()
+        {
+            return "Hello from NavigationController";
         }
     }
 }

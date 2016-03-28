@@ -10,8 +10,8 @@ namespace WebStore.Domain.Abstract
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetProducts(string q);
-        IEnumerable<Product> GetProducts();
+        //IEnumerable<Product> GetProducts(string q);
+        IQueryable<Product> GetProducts();
         Product GetProductById(int? id);
         ObservableCollection<Product> ProductsInMemory();
         void AddNewProduct(Product product);

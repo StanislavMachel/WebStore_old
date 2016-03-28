@@ -18,16 +18,16 @@ namespace WebStore.Repository
     {
         private WebStoreDbContext ctx = new WebStoreDbContext();
       
-        public IEnumerable<Product> GetProducts(string q)
-        {
-            return ctx.Products
-                .Where(p => p.Name.StartsWith(q) || q == null)
-                .ToList().AsEnumerable();
-        }
+        //public IEnumerable<Product> GetProducts(string q)
+        //{
+        //    return ctx.Products
+        //        .Where(p => p.Name.StartsWith(q) || q == null)
+        //        .ToList().AsEnumerable();
+        //}
 
-        public IEnumerable<Product> GetProducts()
+        public IQueryable<Product> GetProducts()
         {
-            return ctx.Products.ToList().AsEnumerable();
+            return ctx.Products;
         }
         public Product GetProductById (int? id)
         {

@@ -29,7 +29,9 @@
             </div>
         </div>
     </div>
-
+    <div id="categories">
+        @{Html.RenderAction("Menu", "Navigation");}
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
