@@ -1,5 +1,7 @@
-﻿@using MvcContrib.UI.Pager
-@using MvcContrib.Pagination
+﻿@*@using MvcContrib.UI.Pager
+@using MvcContrib.Pagination*@
+@using PagedList
+@using PagedList.Mvc
 @model IEnumerable<WebStore.Domain.Entities.Product>
 
 @{
@@ -12,7 +14,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <br />
-@using (Ajax.BeginForm("Index", "Product",
+@*@using (Ajax.BeginForm("Index", "Product",
             new AjaxOptions
             {
                 HttpMethod = "GET",
@@ -24,7 +26,16 @@
     <button type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span> Search
     </button>
-}
+}*@
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+
+    {
+        @Html.TextBox("q", null, htmlAttributes: new { @class = "form-control col-sm-2" })
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+    }
 
 <div id="productTable">
     @{ 
@@ -32,8 +43,19 @@
     }
 </div>
 <br />
-@Html.Raw(Html.Pager((IPagination)Model))
+@*@Html.Raw(Html.Pager((IPagination)Model))*@
+@Html.PagedListPager((IPagedList)Model,
+                     page => Url.Action("Index", new { page, q = Request.QueryString["q"] }),
+                     new PagedListRenderOptions() {
+                         Display = PagedListDisplayMode.IfNeeded,
+                         DisplayPageCountAndCurrentLocation = true,
+                         MaximumPageNumbersToDisplay = 3,
+                         DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                         DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                         DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                         DisplayLinkToPreviousPage = PagedListDisplayMode.Always
 
+                    })
 
 
 
