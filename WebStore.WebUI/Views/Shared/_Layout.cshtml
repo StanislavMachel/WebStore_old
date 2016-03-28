@@ -29,15 +29,21 @@
             </div>
         </div>
     </div>
-    <div id="categories">
-        @{Html.RenderAction("Menu", "Navigation");}
-    </div>
+    
     <div class="container body-content">
-        @RenderBody()
-        <hr />
+        <br />
+        <br />
+        <div id="categories" class="col-xs-2">
+            @{Html.RenderAction("Menu", "Navigation");}
+        </div>
+        <div class="col-xs-10">
+            @RenderBody()
+        </div>
+        
+        @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        </footer>*@
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

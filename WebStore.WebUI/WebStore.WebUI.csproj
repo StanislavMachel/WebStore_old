@@ -199,6 +199,7 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\_ProductTable.cshtml" />
+    <Content Include="Views\Navigation\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebStore.DataLayer\WebStore.DataLayer.csproj">

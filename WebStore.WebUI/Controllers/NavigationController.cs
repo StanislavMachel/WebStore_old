@@ -15,9 +15,13 @@ namespace WebStore.WebUI.Controllers
             repository = productRepository;
         }
         
-        public string Menu()
+        public PartialViewResult Menu()
         {
-            return "Hello from NavigationController";
+            IEnumerable<string> categories = repository.GetProducts()
+                .Select(p => p.Category)
+                .Distinct()
+                .OrderBy(p => p);
+            return PartialView(categories);
         }
     }
 }

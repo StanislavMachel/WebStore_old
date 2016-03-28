@@ -45,7 +45,7 @@
 <br />
 @*@Html.Raw(Html.Pager((IPagination)Model))*@
 @Html.PagedListPager((IPagedList)Model,
-                     page => Url.Action("Index", new { page, q = Request.QueryString["q"] }),
+                     page => Url.Action("Index", new { page, q = Request.QueryString["q"] , category = Request.QueryString["category"] }),
                      new PagedListRenderOptions() {
                          Display = PagedListDisplayMode.IfNeeded,
                          DisplayPageCountAndCurrentLocation = true,
