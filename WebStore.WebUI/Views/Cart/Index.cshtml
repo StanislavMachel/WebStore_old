@@ -1,0 +1,36 @@
+﻿@model WebStore.Domain.Entities.Cart
+
+@{ 
+    ViewBag.Title = "WebStore: Your Cart";
+}
+
+<h2>Your cart</h2>
+<table id="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var productQuantity in Model.ProductQuantityCollection)
+        {
+            <tr>
+                <td>@productQuantity.Product.Name</td>
+                <td>@productQuantity.Quantity</td>
+                <td>@productQuantity.Product.Price.ToString("c")</td>
+                <td>
+                    @((productQuantity.Product.Price * productQuantity.Quantity).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.ComputeTotalCost().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
