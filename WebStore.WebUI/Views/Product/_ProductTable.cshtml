@@ -14,7 +14,7 @@
         {
             <div class="pull-right">
                 @Html.Hidden("productId", item.ProductID.ToString())
-                @Html.Hidden("returnUrlQuery", Request.Url.PathAndQuery)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
                 @*@Html.TextBox("quantity", null, htmlAttributes: new { @class = "form-control col-sm-2" })*@
                 <input type="submit" class="btn btn-success" value="Add to cart" />
             </div>

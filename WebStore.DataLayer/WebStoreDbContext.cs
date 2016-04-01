@@ -11,5 +11,6 @@ namespace WebStore.DataLayer
     public class WebStoreDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        //public DbSet<Stock> Stocks { get; set; }
     }
 }

@@ -18,11 +18,15 @@ namespace WebStore.WebUI.Controllers
         }
         public ViewResult Index(string returnUrl)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (returnUrl != null)
+                ViewData["ReturnUrl"] = returnUrl;
+            else
+                ViewData["ReturnUrl"] = "/Product";
+
             Cart cart = GetCart();
             return View(cart);
         }
-        public RedirectResult AddToCart(int productId, string returnUrlQuery, int quantity = 1)
+        public RedirectToRouteResult AddToCart(int productId, string returnUrl, int quantity = 1)
         {
             Product product = repository.GetProductById(productId);
 
@@ -30,11 +34,11 @@ namespace WebStore.WebUI.Controllers
             {
                 GetCart().AddProduct(product, quantity); //TODO: add more that 1 product
             }
-
-            return Redirect(returnUrlQuery);
+            return RedirectToAction("Index", new { returnUrl });
+            //return Redirect(returnUrlQuery);
         }
 
-        public RedirectResult RemoveFromCart(int productId, string returnUrlQuery)
+        public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
         {
             Product product = repository.GetProductById(productId);
 
@@ -43,7 +47,7 @@ namespace WebStore.WebUI.Controllers
                 GetCart().RemoveProduct(product); //TODO: add more that 1 product
             }
 
-            return Redirect(returnUrlQuery);
+            return RedirectToAction("Index", new { returnUrl });
         }
 
         private Cart GetCart()
@@ -55,6 +59,17 @@ namespace WebStore.WebUI.Controllers
                 Session["Cart"] = cart;
             }
             return cart;
+        }
+        public PartialViewResult Summary ()
+        {
+
+            Cart cart = (Cart)Session["Cart"];
+            if (cart == null)
+            {
+                cart = new Cart();
+                Session["Cart"] = cart;
+            }
+            return PartialView(cart);
         }
     }
 }
