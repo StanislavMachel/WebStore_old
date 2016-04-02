@@ -8,16 +8,41 @@
 Please enter your details, and we will ship your good as soon as possible!
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary()
     <h3>Ship to</h3>
-    <div>Name: @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })</div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
     <h3>Address</h3>
-    <div>Line 1: @Html.EditorFor(x => x.Line1, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>Line 2: @Html.EditorFor(x => x.Line2, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>Line 3: @Html.EditorFor(x => x.Line3, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>City: @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>State: @Html.EditorFor(x => x.State, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>Zip code: @Html.EditorFor(x => x.Zip, new { htmlAttributes = new { @class = "form-control" } })</div>
-    <div>Contry: @Html.EditorFor(x => x.Country, new { htmlAttributes = new { @class = "form-control" } })</div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Line1)
+        @Html.EditorFor(x => x.Line1, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Line2)
+        @Html.EditorFor(x => x.Line2, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Line3)
+        @Html.EditorFor(x => x.Line3, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.City)
+        City: @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.State)
+        @Html.EditorFor(x => x.State, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Zip)
+        @Html.EditorFor(x => x.Zip, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Country)
+        @Html.EditorFor(x => x.Country, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
     <h3>Options</h3>
     <label>
         @Html.EditorFor(x => x.GiftWrap, new { htmlAttributes = new { @class = "checkbox" } })

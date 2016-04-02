@@ -1,4 +1,4 @@
-﻿@model WebStore.Domain.Entities.Cart
+﻿@model WebStore.WebUI.Models.CartIndexViewModel
 
 @{ 
     ViewBag.Title = "WebStore: Your Cart";
@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var productQuantity in Model.ProductQuantityCollection)
+        @foreach (var productQuantity in Model.Cart.ProductQuantityCollection)
         {
             <tr>
                 <td class="text-left">@productQuantity.Product.Name</td>
@@ -41,13 +41,13 @@
     <tfoot>
         <tr>
             <td class="text-right" colspan="3">Total:</td>
-            <td class="text-right">@Model.ComputeTotalCost().ToString("c")</td>
+            <td class="text-right">@Model.Cart.ComputeTotalCost().ToString("c")</td>
         </tr>
     </tfoot>
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@ViewData["ReturnUrl"]">Continue shopping</a>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
     @Html.ActionLink("Checkout now", "Checkout", "Cart", null, new { @class = "btn btn-primary" })
 
 </div>

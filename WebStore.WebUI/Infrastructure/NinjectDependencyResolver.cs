@@ -41,7 +41,7 @@ namespace WebStore.WebUI.Infrastructure
                   .To<SimpleProductRepository>();
             kelner.Bind<IOrderProcessor>()
                   .To<EmailOrderProcessor>()
-                  .WithConstructorArgument("settings", "emailSettings");
+                  .WithConstructorArgument("settings", emailSettings);
         }
     }
 }

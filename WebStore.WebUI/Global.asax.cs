@@ -6,8 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebStore.DataLayer;
-using WebStore.WebUI.Models.Binds;
 using WebStore.DataLayer.Migrations;
+using WebStore.WebUI.Infrastructure.Binders;
+using WebStore.Domain.Entities;
+
 namespace WebStore.WebUI
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -20,6 +22,7 @@ namespace WebStore.WebUI
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WebStoreDbContext>());
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WebStoreDbContext, Configuration>());
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="CartControllerUnitTests.cs" />
     <Compile Include="CartTests.cs" />
     <Compile Include="NavigationControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

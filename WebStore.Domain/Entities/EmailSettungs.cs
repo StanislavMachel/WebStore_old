@@ -19,7 +19,7 @@ namespace WebStore.Domain.Entities
         public string ServerName = "smtp.example.com";
         public int ServerPort = 587;
         public bool WrireAsFile = false;
-        public string FileLocation = "@D:\\CSharp\\debug";
+        public string FileLocation = @"D:\\CSharp\\debug";
     }
 
     public class EmailOrderProcessor : IOrderProcessor
