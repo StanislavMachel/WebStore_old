@@ -11,10 +11,12 @@ namespace WebStore.WebUI.Controllers
     public class CartController : Controller
     {
         private IProductRepository repository;
+        private IOrderProcessor processor;
 
-        public CartController(IProductRepository productRepository)
+        public CartController(IProductRepository productRepository, IOrderProcessor orderProcessor)
         {
             repository = productRepository;
+            processor = orderProcessor;
         }
         public ViewResult Index(string returnUrl)
         {
@@ -71,5 +73,23 @@ namespace WebStore.WebUI.Controllers
             }
             return PartialView(cart);
         }
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
+        //[HttpPost]
+        //public ViewResult Checkout(Cart cart)
+        //{
+            
+        //    if (cart.ProductQuantityCollection.Count() == 0)
+        //    {
+        //        ModelState.AddModelError("", "Sorry, you cart is empty!");
+        //    }
+        //    else if (ModelState.IsValid)
+        //    {
+        //        processor.ProcessOrder(cart, shippingDetails)
+        //    }
+        //}
     }
 }

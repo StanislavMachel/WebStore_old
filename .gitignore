@@ -1,0 +1,13 @@
+/WebStore.WebUI/bin
+/WebStore.WebUI/obj
+/WebStore.UnitTests/bin
+/WebStore.UnitTests/obj
+/WebStore.Domain/bin
+/WebStore.Domain/obj
+/Database backup
+/WebStore.DataLayer/bin/Debug
+/.vs
+/WebStore.DataLayer/obj/Debug
+/WebStore.Repository/bin/Debug
+/WebStore.Repository/obj/Debug
+/products.txt

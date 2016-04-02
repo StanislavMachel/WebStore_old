@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Ninject;
 using WebStore.Domain.Abstract;
 using WebStore.Repository;
+using WebStore.Domain.Entities;
+using System.Configuration;
 
 namespace WebStore.WebUI.Infrastructure
 {
@@ -27,10 +29,19 @@ namespace WebStore.WebUI.Infrastructure
         {
             return kelner.GetAll(serviceType);
         }
+
+        EmailSettings emailSettings = new EmailSettings
+        {
+            WrireAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile" ?? "false"])
+        };
         private void AddBindings()
         {
             //put buindings here
-            kelner.Bind<IProductRepository>().To<SimpleProductRepository>();
+            kelner.Bind<IProductRepository>()
+                  .To<SimpleProductRepository>();
+            kelner.Bind<IOrderProcessor>()
+                  .To<EmailOrderProcessor>()
+                  .WithConstructorArgument("settings", "emailSettings");
         }
     }
 }
