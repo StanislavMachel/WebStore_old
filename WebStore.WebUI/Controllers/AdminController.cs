@@ -12,6 +12,7 @@ using PagedList;
 
 namespace WebStore.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;
@@ -91,10 +92,17 @@ namespace WebStore.WebUI.Controllers
         // POST: Product/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product/*, HttpPostedFileBase image = null*/)
         {
             if (ModelState.IsValid)
             {
+                //if (image != null)
+                //{
+                //    product.ImageMimeType = image.ContentType;
+                //    product.ImageData = new byte[image.ContentLength];
+                //    image.InputStream.Read(product.ImageData, 0, image.ContentLength);
+                //}
+
                 repository.UpdateProduct(product);
                 repository.Save();
                 return RedirectToAction("Index");

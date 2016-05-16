@@ -9,6 +9,9 @@ using WebStore.Domain.Abstract;
 using WebStore.Repository;
 using WebStore.Domain.Entities;
 using System.Configuration;
+using WebStore.WebUI.Infrastructure.Abstract;
+using WebStore.WebUI.Infrastructure.Concrete;
+
 
 namespace WebStore.WebUI.Infrastructure
 {
@@ -42,6 +45,7 @@ namespace WebStore.WebUI.Infrastructure
             kelner.Bind<IOrderProcessor>()
                   .To<EmailOrderProcessor>()
                   .WithConstructorArgument("settings", emailSettings);
+            kelner.Bind<IAuthProvider>().To<FormAuthProvider>();
         }
     }
 }

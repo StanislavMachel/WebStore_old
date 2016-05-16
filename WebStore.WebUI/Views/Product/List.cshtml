@@ -23,19 +23,33 @@
     </button>
 }*@
 
-@using (Html.BeginForm("List", "Product", FormMethod.Get))
-{
-    @Html.TextBox("q", null, htmlAttributes: new { @class = "form-control col-sm-2" })
-    <button type="submit" class="btn btn-default">
-        <span class="glyphicon glyphicon-search"></span> Search
-    </button>
-}
-<br />
-<div id="productTable">
-    @{ 
-        Html.RenderPartial("_ProductTable", Model);
+<style>
+    .form-group{
+        padding-left: 19px;
+        padding-right: 19px;
     }
+</style>
+<div class="row panel">
+    @using (Html.BeginForm("List", "Product", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group form-group-lg">
+            @Html.TextBox("q", null, htmlAttributes: new { @class = "form-control col-sm-10 col-xs-10", @for="btn" })
+            <div class="col-sm-2 col-xs-2">
+                <button id="btn" type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </div>
+        </div>
+        
+    }
+
+    <div id="productTable">
+        @{
+            Html.RenderPartial("_ProductTable", Model);
+        }
+    </div>
 </div>
+
 <br />
 
 @Html.PagedListPager((IPagedList)Model,
